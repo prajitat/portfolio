@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Prajita Tandukar | Debug Technician</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --accent: #6a3d59;
+    --background: #fff9f4;
+    --text-color: #000000fc;
+    --highlight: #d4acc3;
+  }
+  body.night {
+    --accent: #d4acc3;
+    --background: #23202b;
+    --text-color: #f5e9f7;
+    --highlight: #3a2c3f;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+  body {
+    font-family: "Poppins", sans-serif;
+    background: var(--background);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background 0.5s, color 0.5s;
+  }
+  a {
+    color: rgb(217, 165, 177);
+    transition: color 0.3s ease;
+  }
+  a:hover {
+    color: #864e76;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 15px;
+    animation: fadeInBody 1.2s ease;
+  }
+  @keyframes fadeInBody {
+    from { opacity: 0; transform: translateY(30px);}
+    to { opacity: 1; transform: translateY(0);}
+  }
+  header {
+    text-align: center;
+    padding-bottom: 40px;
+    border-bottom: 2px solid var(--accent);
+    animation: slideDown 1s cubic-bezier(.68,-0.55,.27,1.55);
+  }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-40px);}
+    to { opacity: 1; transform: translateY(0);}
+  }
+  header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    animation: fadeInLeft 1s 0.2s both;
+  }
+  @keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-40px);}
+    to { opacity: 1; transform: translateX(0);}
+  }
+  header h2 {
+    font-weight: 500;
+    color: var(--accent);
+    margin-top: 8px;
+    font-family: "Ubuntu", sans-serif;
+    animation: fadeInRight 1s 0.4s both;
+  }
+  @keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(40px);}
+    to { opacity: 1; transform: translateX(0);}
+  }
+  header img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: 20px;
+    border: 3px solid var(--accent);
+    animation: popIn 0.8s 0.6s both;
+  }
+  @keyframes popIn {
+    0% { opacity: 0; transform: scale(0.7);}
+    80% { opacity: 1; transform: scale(1.1);}
+    100% { opacity: 1; transform: scale(1);}
+  }
+  .toggle-theme-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #0002;
+    transition: background 0.3s, color 0.3s;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .toggle-theme-btn:focus {
+    outline: 2px solid var(--highlight);
+  }
+  section {
+    margin-top: 50px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  section h3 {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 600;
+    font-size: 2rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 6px;
+    position: relative;
+    overflow: hidden;
+  }
+  section h3::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.6s cubic-bezier(.68,-0.55,.27,1.55);
+  }
+  section.visible h3::after {
+    width: 100%;
+  }
+  #about p,
+  #education p,
+  #experience p {
+    font-size: 1.1rem;
+    max-width: 900px;
+    margin: 0 auto 10px;
+    text-align: center;
+  }
+  #services ul,
+  #skills,
+  #projects,
+  #contact {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  #services ul {
+    list-style: disc inside;
+    font-size: 1.1rem;
+  }
+  #services ul li {
+    margin-bottom: 15px;
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: fadeInList 0.7s forwards;
+    animation-delay: calc(0.1s * var(--i));
+  }
+  @keyframes fadeInList {
+    to { opacity: 1; transform: translateX(0);}
+  }
+  .skill-category {
+    margin-bottom: 30px;
+  }
+  .skill-category h4 {
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: var(--accent);
+  }
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .skill-list li {
+    background: var(--accent);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 1rem;
+    color: white;
+    opacity: 0;
+    transform: scale(0.7);
+    animation: bubbleIn 0.5s forwards;
+    animation-delay: calc(0.08s * var(--i));
+  }
+  @keyframes bubbleIn {
+    to { opacity: 1; transform: scale(1);}
+  }
+  .project {
+    background: var(--highlight);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s, transform 0.7s;
+  }
+  .project.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .project h4 {
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .project .author {
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    color: #555;
+  }
+  .project p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .github-link {
+    color: var(--accent);
+    font-weight: 600;
+    transition: color 0.3s, text-shadow 0.3s;
+  }
+  .github-link:hover {
+    color: #d17ea6;
+    text-shadow: 0 2px 8px #d4acc3;
+  }
+  #contact {
+    margin: 0 auto 80px;
+    text-align: center;
+  }
+  #contact p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  #contact a {
+    font-weight: 700;
+  }
+  @media(max-width: 768px) {
+    header h1 { font-size: 2.2rem; }
+    header h2 { font-size: 1.3rem; }
+    section h3 { font-size: 1.6rem; }
+    .toggle-theme-btn { top: 15px; right: 15px; }
+  }
+</style>
+</head>
+<body>
+  <button class="toggle-theme-btn" id="themeToggle" aria-label="Toggle day/night mode" title="Toggle day/night mode">🌙</button>
+  <div class="container">
+    <header>
+      <h1>Prajita Tandukar</h1>
+      <h2>Debug Technician</h2>
+      <img src="https://media.licdn.com/dms/image/v2/D4D03AQE2NRZEivIoNA/profile-displayphoto-shrink_400_400/B4DZbL4no1HAAg-/0/1747177340312?e=1758153600&v=beta&t=FGotoY80RasX6dNC4iUys4f2psAVMV8vLmY-9B4_SMc" alt="Prajita Tandukar's Profile Picture" />
+      <p>Debugging server components with precision and passion.</p>
+      <p>Based in Florence, KY</p>
+    </header>
+
+    <section id="about">
+      <h3>About Me</h3>
+      <p>
+        As a technophile, I seek to craft rational solutions to real-world problems through my skills. While I am away from my computer, you can find me cooking, dancing, traveling and listening to music. Besides, I love to share knowledge and educate others. My simple motto: When there is will, there is the way!!
+      </p>
+    </section>
+
+    <section id="education">
+      <h3>Education</h3>
+      <p><strong>Bachelor of Science in Computer Information Technology</strong></p>
+      <p>Graduation: May 2026 | Minor: Computer Science | Concentration: Cybersecurity</p>
+      <p>Northern Kentucky University, Highland Heights, KY</p>
+      <p>GPA: 3.5</p>
+      <p>Relevant Coursework: Data Structures, <abbr title="Database Management Systems">DBMS</abbr>, Web Development, <abbr title="Operating Systems">OS</abbr>, Networks</p>
+    </section>
+
+    <section id="experience">
+      <h3>Experience</h3>
+      <p><strong>Debug Technician Intern</strong></p>
+      <p>Company: JABIL Inc., Florence, KY | Duration: May 2024 - Present</p>
+    </section>
+
+    <section id="services">
+      <h3>Services</h3>
+      <ul>
+        <li style="--i:1">Debug server components (JBOGs, Head nodes).</li>
+        <li style="--i:2">Use Linux CLI tools to analyze logs, kernel messages, and embedded systems.</li>
+        <li style="--i:3">Develop Python scripts for automating test tasks and hardware validation.</li>
+        <li style="--i:4">Collaborate with cross-functional teams to resolve technical issues.</li>
+        <li style="--i:5">Assist in system administration tasks and network troubleshooting.</li>
+        <li style="--i:6">Contribute to documentation and knowledge sharing within the team.</li>
+
+      </ul>
+    </section>
+
+    <section id="skills">
+      <h3>Skills</h3>
+      <div class="skill-category">
+        <h4>Programming Languages</h4>
+        <ul class="skill-list">
+          <li style="--i:1">Python</li>
+          <li style="--i:2">Java</li>
+          <li style="--i:3">JavaScript</li>
+          <li style="--i:4">SQL</li>
+          <li style="--i:5">HTML</li>
+          <li style="--i:6">CSS</li>
+        </ul>
+          <li style="--i:3">JavaScript</li>
+          <li style="--i:4">SQL</li>
+          <li style="--i:5">HTML</li>
+          <li style="--i:6">CSS</li>
+      </div>
+      <div class="skill-category">
+        <h4>Cybersecurity & Networking</h4>
+        <ul class="skill-list">
+          <li style="--i:1">Network Security</li><li style="--i:2">Penetration Testing</li><li style="--i:3">Vulnerability Assessment</li><li style="--i:4">Incident Response</li><li style="--i:5">Firewall Configuration</li><li style="--i:6">Network
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h4>Operating Systems & Environments</h4>
+        <ul class="skill-list">
+          <li style="--i:1">Linux (Bash, CLI)</li><li style="--i:2">Kali Linux</li><li style="--i:3">AWS</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h4>Frameworks & Tools</h4>
+        <ul class="skill-list">
+          <li style="--i:1">Metasploit</li><li style="--i:2">Wireshark</li><li style="--i:3">Nmap</li><li style="--i:4">MITRE ATT&CK</li><li style="--i:5">PyCharm</li><li style="--i:6">MOBA</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h4>Soft Skills</h4>
+        <ul class="skill-list">
+          <li style="--i:1">Problem Solving</li><li style="--i:2">Leadership</li><li style="--i:3">Teamwork</li><li style="--i:4">Initiative</li><li style="--i:5">Customer Service</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h3>Projects</h3>
+      <div class="project">
+        <h4>Climate Change Classification Using Machine Learning</h4>
+        <div class="author">Author: Prajita</div>
+        <p>
+          Classified climate zones from multi-decade datasets with EDA, ML models (Linear Regression, Decision Trees), and planned advanced models (Random Forest, LSTMs).
+        </p>
+      </div>
+
+      <div class="project">
+        <h4>System Administration Automation</h4>
+        <p>Automated sysadmin tasks with Python on CentOS 9 VM. Improved reliability and efficiency.</p>
+        <p><a href="https://prajita.vercel.app/#projects" target="_blank" class="github-link">Live Site</a></p>
+      </div>
+
+      <div class="project">
+        <h4>FarmFuturist Website</h4>
+        <p>Responsive website for Kentucky farmers. Focused on accessibility, minimal design, and cross-device UX.</p>
+        <p><a href="https://github.com/prajitat/FarmFuturist" target="_blank" class="github-link">GitHub</a></p>
+      </div>
+
+      <div class="project">
+        <h4>Python QR-Generator</h4>
+        <p>Python app to generate portfolio QR codes with QRServer API and branding options.</p>
+        <p><a href="https://github.com/prajitat/QR-Generator" target="_blank" class="github-link">GitHub</a></p>
+      </div>
+
+      <div class="project">
+        <h4>Network Design for NKU IT LLC</h4>
+        <p>Designed multi-building network topology, DHCP, subnetting, and routing in Packet Tracer.</p>
+        <p><a href="https://github.com/prajitat/Network-Design" target="_blank" class="github-link">GitHub</a></p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h3>Contact</h3>
+      <p>Email: <a href="mailto:prajitatandukar@gmail.com">prajitatandukar@gmail.com</a></p>
+      <p>GitHub: <a href="https://github.com/prajitat" target="_blank">github.com/prajitat</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/prajitatandukar/" target="_blank">linkedin.com/in/prajitatandukar</a></p>
+    </section>
+
+  </div>
+  <script>
+    // Animate sections and projects on scroll
+    function revealOnScroll() {
+      const sections = document.querySelectorAll('section');
+      const projects = document.querySelectorAll('.project');
+      const windowHeight = window.innerHeight;
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < windowHeight - 80) {
+          section.classList.add('visible');
+        }
+      });
+      projects.forEach(project => {
+        const top = project.getBoundingClientRect().top;
+        if (top < windowHeight - 80) {
+          project.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('DOMContentLoaded', () => {
+      // Animate skill-list and services list items with delay
+      document.querySelectorAll('.skill-list').forEach(list => {
+        list.querySelectorAll('li').forEach((li, i) => {
+          li.style.setProperty('--i', i + 1);
+        });
+      });
+      document.querySelectorAll('#services ul li').forEach((li, i) => {
+        li.style.setProperty('--i', i + 1);
+      });
+      revealOnScroll();
+
+      // Theme toggle logic
+      const themeBtn = document.getElementById('themeToggle');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const savedTheme = localStorage.getItem('theme');
+      function setTheme(night) {
+        document.body.classList.toggle('night', night);
+        themeBtn.textContent = night ? '☀️' : '🌙';
+        localStorage.setItem('theme', night ? 'night' : 'day');
+      }
+      // Initial theme
+      if (savedTheme === 'night' || (!savedTheme && prefersDark)) {
+        setTheme(true);
+      } else {
+        setTheme(false);
+      }
+      themeBtn.addEventListener('click', () => {
+        setTheme(!document.body.classList.contains('night'));
+      });
+    });
+  </script>
+</div>
+  <footer>
+    <p>&copy; 2024 Prajita Tandukar. All rights reserved.</p>
+  </footer>
+  <style>
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: var(--text-color);
+      padding: 20px 0;
+      border-top: 1px solid var(--accent);
+      animation: fadeInFooter 0.8s ease;
+    }
+    @keyframes fadeInFooter {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</body>
+</html>
+
