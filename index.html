@@ -113,14 +113,7 @@
   footer { max-width: 900px; margin: 0 auto; padding: 2rem 2.5rem; border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
   footer p { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.08em; }
   footer a { color: var(--accent); text-decoration: none; }
-<div class="edu-card">
-  <div>
-    <div class="edu-degree">Google IT Support Professional Certificate</div>
-    <div class="edu-school">Coursera · Developed by Google</div>
-    <div class="edu-meta">Completed June 2026 · 6-Course Program (Networking, OS, System Admin, Security)</div>
-  </div>
-  <a href="https://coursera.org/verify/professional-cert/41K6KJBDMTKT" target="_blank" class="gpa-badge" style="text-decoration:none;">Verify Cert</a>
-</div>
+
   @media (max-width: 600px) {
     nav { padding: 1rem 1.25rem; }
     .nav-links { gap: 1rem; }
@@ -155,12 +148,155 @@
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
     <a href="#experience">Experience</a>
-    <a href="#certifications">Certifications</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <div class="hero">
   <div class="hero-top">
-    <img class="hero-photo" id="heroPhoto" alt="Prajita Tandukar" src="data:image/png;base64,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
-      
+    <img class="hero-photo" id="heroPhoto" alt="Prajita Tandukar" src="data:image/png;base64,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" style="display:none;">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Information Technology Specialist</div>
+      <h1>Prajita Tandukar<span class="line2">Portfolio & Projects</span></h1>
+      <p class="hero-desc">B.S. in Information Technology graduate with a minor in Computer Science, specialized in systems optimization, infrastructure support, and deployment pipelines.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Get In Touch</a>
+        <a href="https://github.com/prajitat" target="_blank" class="btn btn-outline">View GitHub</a>
+      </div>
+    </div>
+    <div class="hero-grid" style="display:none;">
+      <div class="hero-stat"><div class="num">3<span class="accent">+</span></div><div class="label">Years Exp</div></div>
+      <div class="hero-stat"><div class="num">12</div><div class="label">Projects</div></div>
+      <div class="hero-stat"><div class="num">4</div><div class="label">Certs</div></div>
+    </div>
+  </div>
+</div>
+
+<section id="skills">
+  <div class="section-label">Core Technical Skills</div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-icon">💻</div>
+      <h3>Systems & Infrastructure</h3>
+      <div class="skill-tags">
+        <span class="tag">Active Directory</span>
+        <span class="tag">Linux/Unix</span>
+        <span class="tag">Windows Server</span>
+        <span class="tag">System Admin</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🌐</div>
+      <h3>Networking & Security</h3>
+      <div class="skill-tags">
+        <span class="tag">TCP/IP</span>
+        <span class="tag">DNS/DHCP</span>
+        <span class="tag">Network Security</span>
+        <span class="tag">Firewalls</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🛠️</div>
+      <h3>Support & Automation</h3>
+      <div class="skill-tags">
+        <span class="tag">IT Support</span>
+        <span class="tag">Troubleshooting</span>
+        <span class="tag">Bash</span>
+        <span class="tag">Python</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-label">Selected Projects</div>
+  <div class="projects-grid">
+    <div class="project-card highlight">
+      <div class="project-num">01 // NETWORKING</div>
+      <h3>Enterprise Network Subnetting Blueprint</h3>
+      <p>Designed a comprehensive VLSM subnetting schema for a simulated multi-floor corporation. Optimized broadcast domains, implemented DHCP helper pools, and established rigorous firewall boundary rules.</p>
+      <div class="project-footer">
+        <div class="skill-tags"><span class="tag">Cisco Packet Tracer</span><span class="tag">VLSM</span></div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">02 // SYSTEMS</div>
+      <h3>Automated System Deployment Script</h3>
+      <p>Created a series of Bash and PowerShell scripts to standardize endpoint deployment configurations, perform patch updates, and manage user provisioning securely across local domains.</p>
+      <div class="project-footer">
+        <div class="skill-tags"><span class="tag">Bash</span><span class="tag">PowerShell</span><span class="tag">SysAdmin</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-label">Experience & Leadership</div>
+  <div class="leadership-card">
+    <div>
+      <h3>Nepalese Student Association (NSA)</h3>
+      <div class="org">Northern Kentucky University</div>
+      <div class="leadership-stats">
+        <div class="l-stat"><div class="num">$2,500+</div><div class="lbl">Funds raised</div></div>
+        <div class="l-stat"><div class="num">350<span style="font-size:1rem;color:var(--accent2)">+</span></div><div class="lbl">Volunteers</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-label">Education & Certifications</div>
+  
+  <div class="edu-card">
+    <div>
+      <div class="edu-degree">B.S. Information Technology · Minor in Computer Science</div>
+      <div class="edu-school">Northern Kentucky University — Highland Heights, KY</div>
+      <div class="edu-meta">Graduated May 2026 · College of Informatics Honors · Dean's List</div>
+    </div>
+    <div class="gpa-badge">GPA 3.60</div>
+  </div>
+
+  <div class="edu-card">
+    <div>
+      <div class="edu-degree">Google IT Support Professional Certificate</div>
+      <div class="edu-school">Coursera · Developed by Google</div>
+      <div class="edu-meta" style="margin-bottom: 0.75rem;">Completed June 2026 · 6-Course Intensive Program</div>
+      <div class="skill-tags">
+        <span class="tag coral">Technical Support Fundamentals</span>
+        <span class="tag coral">The Bits and Bytes of Computer Networking</span>
+        <span class="tag coral">Operating Systems and You: Becoming a Power User</span>
+        <span class="tag coral">System Administration and IT Infrastructure Services</span>
+        <span class="tag coral">IT Security: Defense against the digital dark arts</span>
+        <span class="tag coral">Accelerate Your Job Search with AI</span>
+      </div>
+    </div>
+    <a href="https://coursera.org/verify/professional-cert/41K6KJBDMTKT" target="_blank" class="gpa-badge" style="text-decoration:none; border: 1px solid var(--accent2); background: transparent;">Verify Certificate</a>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <div class="contact-grid">
+    <a href="https://github.com/prajitat" target="_blank" class="contact-card">
+      <div class="contact-icon">💻</div>
+      <div><span class="contact-label">GitHub</span><div class="contact-val">github.com/prajitat</div></div>
+    </a>
+    <a href="https://linkedin.com/in/prajitatandukar/" target="_blank" class="contact-card">
+      <div class="contact-icon" style="background:rgba(93,202,165,0.12);color:var(--accent2)">👥</div>
+      <div><span class="contact-label">LinkedIn</span><div class="contact-val">linkedin.com/in/prajitatandukar</div></div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Prajita Tandukar. Built with HTML & CSS.</p>
+</footer>
+
+<script>
+  // Ensuring local styling placeholders load safely if no images are present
+  document.getElementById('heroPhoto').onerror = function() {
+    this.style.display = 'none';
+  };
+</script>
+</body>
+</html>
